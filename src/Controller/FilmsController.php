@@ -35,6 +35,10 @@ class FilmsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash(
+                'notice',
+                'Votre film a bien était crée'
+            );
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($film);
             $entityManager->flush();
@@ -67,6 +71,10 @@ class FilmsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash(
+                'notice',
+                'Votre film a bien était modifié'
+            );
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('films_index');
@@ -84,6 +92,10 @@ class FilmsController extends AbstractController
     public function delete(Request $request, Films $film): Response
     {
         if ($this->isCsrfTokenValid('delete'.$film->getId(), $request->request->get('_token'))) {
+            $this->addFlash(
+                'notice',
+                'Votre film a bien était supprimé'
+            );
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($film);
             $entityManager->flush();

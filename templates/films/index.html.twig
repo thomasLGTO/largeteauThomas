@@ -4,6 +4,11 @@
 
 {% block body %}
     <h1 class="text-center p-3">Tous les films</h1>
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <div class="container d-flex flex-wrap justify-content-around my-5 ">
         {% for film in films %}
             <div class="card col-3" style="width: 18rem;">
