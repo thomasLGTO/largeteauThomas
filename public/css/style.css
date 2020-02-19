@@ -1,0 +1,13 @@
+/*body*/
+.navbar{
+    background-color: black !important;
+    
+}
+.navbar>a{
+    color:white !important;
+}
+
+.card{
+    border: 1px solid black;
+}
+
