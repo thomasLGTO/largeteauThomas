@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Films{% endblock %}
+
+{% block body %}
+    <h1 class="text-center m-5">Film</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ film.titre }}</td>
+            </tr>
+            <tr>
+                <th>Realisateur</th>
+                <td>{{ film.realisateur }}</td>
+            </tr>
+            <tr>
+                <th>Recompense</th>
+                <td>{{ film.recompense }}</td>
+            </tr>
+            <tr>
+                <th>Sorti</th>
+                <td>{{ film.sorti ? film.sorti|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Synopsis</th>
+                <td>{{ film.synopsis }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('films_index') }}" class="btn btn-primary m-2">Revenir a la liste de films</a>
+
+    <a href="{{ path('films_edit', {'id': film.id}) }}" class="btn btn-primary m-2">Modifier</a>
+
+    {{ include('films/_delete_form.html.twig') }}
+{% endblock %}
